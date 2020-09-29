@@ -5,7 +5,19 @@ class HeadersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HeaderWaveGradient(),
+      body: PageView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          HeaderCuadrado(),
+          HeaderBordesRedondeados(),
+          HeaderDiagonal(),
+          HeaderTriangular(),
+          HeaderPico(),
+          HeaderCurvo(),
+          HeaderWave(),
+          HeaderWaveGradient(),
+        ],
+      ),
     );
   }
 }
