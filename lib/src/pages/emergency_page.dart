@@ -1,8 +1,11 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:disenos_intermedio/src/widgets/boton_gordo.dart';
 import 'package:flutter/material.dart';
-import 'package:disenos_intermedio/src/widgets/headers.dart';
+
+import 'package:animate_do/animate_do.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:disenos_intermedio/src/widgets/headers.dart';
+import 'package:disenos_intermedio/src/widgets/boton_gordo.dart';
 
 class ItemBoton {
   final IconData icon;
@@ -44,39 +47,39 @@ class EmergencyPage extends StatelessWidget {
     ];
 
     List<Widget> itemMap = items
-        .map(
-          (item) => FadeInLeft(
-            duration: Duration(milliseconds: 250),
-            child: BotonGordo(
-              icon: item.icon,
-              texto: item.texto,
-              color1: item.color1,
-              color2: item.color2,
-              onPress: () {
-                print('hola');
-              },
-            ),
-          ),
-        )
+        .map((item) => FadeInLeft(
+              duration: Duration(milliseconds: 250),
+              child: BotonGordo(
+                icon: item.icon,
+                texto: item.texto,
+                color1: item.color1,
+                color2: item.color2,
+                onPress: () {
+                  print('hola');
+                },
+              ),
+            ))
         .toList();
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 210),
-            child: ListView(
-              physics: BouncingScrollPhysics(),
-              children: [
-                SizedBox(height: 80),
-                ...itemMap,
-              ],
-            ),
+        // backgroundColor: Colors.red,
+        body: Stack(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 200),
+          child: ListView(
+            physics: BouncingScrollPhysics(),
+            children: <Widget>[
+              SizedBox(
+                height: 80,
+              ),
+              ...itemMap
+            ],
           ),
-          _Encabezado()
-        ],
-      ),
-    );
+        ),
+        _Encabezado()
+      ],
+    ));
   }
 }
 
@@ -84,7 +87,7 @@ class _Encabezado extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: <Widget>[
         IconHeader(
           icon: FontAwesomeIcons.plus,
           titulo: 'Asistencia Médica',
@@ -93,14 +96,13 @@ class _Encabezado extends StatelessWidget {
           color2: Color(0xff66A9F2),
         ),
         Positioned(
-          right: -20,
-          top: 25,
-          child: RawMaterialButton(
-              onPressed: () {},
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(15),
-              child: FaIcon(FontAwesomeIcons.ellipsisV, color: Colors.white)),
-        )
+            right: 0,
+            top: 45,
+            child: RawMaterialButton(
+                onPressed: () {},
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(15.0),
+                child: FaIcon(FontAwesomeIcons.ellipsisV, color: Colors.white)))
       ],
     );
   }
@@ -115,7 +117,7 @@ class BotonGordoTemp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BotonGordo(
       icon: FontAwesomeIcons.carCrash,
-      texto: 'Hola mundo!',
+      texto: 'Motor Accident',
       color1: Color(0xff6989F5),
       color2: Color(0xff906EF5),
       onPress: () {
@@ -133,8 +135,8 @@ class PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconHeader(
-      icon: FontAwesomeIcons.plusCircle,
-      subtitulo: 'Haz solicitado',
+      icon: FontAwesomeIcons.plus,
+      subtitulo: 'Haz Solicitado',
       titulo: 'Asistencia Médica',
       color1: Color(0xff526BF6),
       color2: Color(0xff67ACF2),

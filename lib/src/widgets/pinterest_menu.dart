@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PinterestButton {
-  final Function onPresses;
+  final Function onPressed;
   final IconData icon;
 
   PinterestButton({
-    @required this.onPresses,
+    @required this.onPressed,
     @required this.icon,
   });
 }
@@ -108,7 +108,7 @@ class _PinterestMenuButton extends StatelessWidget {
       onTap: () {
         Provider.of<_MenuModel>(context, listen: false).itemSeleccionado =
             index;
-        item.onPresses();
+        item.onPressed();
       },
       behavior: HitTestBehavior.translucent,
       child: Container(

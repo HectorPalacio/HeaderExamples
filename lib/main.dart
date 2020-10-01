@@ -1,15 +1,21 @@
-import 'package:disenos_intermedio/src/pages/home_page.dart';
+import 'package:disenos_intermedio/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'package:disenos_intermedio/src/pages/launcher_page.dart';
+import 'package:provider/provider.dart';
+
+void main() => runApp(
+    ChangeNotifierProvider(create: (_) => new ThemeChanger(2), child: MyApp()));
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final currentTheme = Provider.of<ThemeChanger>(context).currentTheme;
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Diseños app',
-      home: HomePage(),
-    );
+        theme: currentTheme,
+        debugShowCheckedModeBanner: false,
+        title: 'Diseños App',
+        home: LauncherPage());
   }
 }
